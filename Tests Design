@@ -31,15 +31,15 @@ saveToHDF5 - visual, must check manually
 
 cellPolyOrder - Check against dummy variables for all of these
 getActiveCellIDs
-getDimension
-numActiveElements
-numFluxDofs
-numFieldDofs
-numElements
+getDimension - compute # from paramaters & check
+numActiveElements - compute # of elements from parameters & check, 1 refined gives 4
+numFluxDofs - test that FluxDofs + FieldDofs == GlobalDofs
+numFieldDofs - test that FluxDofs + FieldDofs == GlobalDofs
+numElements - computer # of elements from pararmaters & check, 1 refined gives 5
 numGlobalDofs - check fluxdofs + fielddofs
 
-hRefine -
-pRefine -
+hRefine - refine 1 cell, it should take 1 away and add 4 so cell count should be up 3
+pRefine - pRefine one cell, use cellPolyOrder to check to see if it went up by 1
 registerSolution -
-vertexIndicesForCell -
-verticesForCell - 
+vertexIndicesForCell - run a dummy test initially for a 1x1, test should make sure it doesn't change
+verticesForCell - run a dummy test initially for a 1x1, test should make sure it doesn't change
