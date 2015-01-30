@@ -4,6 +4,7 @@
 %}
 
 %include "std_string.i"
+%include "std_pair.i"
 
 %nodefaultctor BC;  // Disable the default constructor for class BC
 
