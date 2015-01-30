@@ -19,7 +19,7 @@ public:
   GlobalIndexType numActiveElements();
   GlobalIndexType numFluxDofs();
   GlobalIndexType numFieldDofs();
-  GlobalIndexType numGlobalDofs()
+  GlobalIndexType numGlobalDofs();
   GlobalIndexType numElements();
   void pRefine(const set<GlobalIndexType> &cellIDsForPRefinments);
   void registerSolution(SolutionPtr solution);

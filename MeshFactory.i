@@ -10,7 +10,7 @@
 
 class MeshFactory {
 public:
-  static MeshPtr loadFromHDF5(BilinearFormPtr bf, string filename);
-  static MeshPtr rectilinearMesh(BilinearFormPtr bf, vector<double> dimensions, vector<int> elementCounts, int H1Order, int pToAddTest=-1, vector<double> x0 = vector<double>());
-  static MeshPtr readTriangle(string filePath, Teuchos::RCP< BilinearForm > bilinearForm, int H1Order, int pToAdd);
+  static MeshPtr loadFromHDF5(BFPtr bf, string filename);
+  static MeshPtr rectilinearMesh(BFPtr bf, vector<double> dimensions, vector<int> elementCounts, int H1Order, int pToAddTest=-1, vector<double> x0 = vector<double>());
+  static MeshPtr readTriangle(string filePath, BFPtr bilinearForm, int H1Order, int pToAdd);
 };

@@ -44,27 +44,27 @@ LINK_ALL="-lpython2.7 -L$Trilinos_LIBRARY_DIRS $Trilinos_LIBRARIES_LINK_LINE -L$
 #$CPP -c -Wall -fpic SpatialFilter_wrap.cxx $INCLUDE_ALL
 #$CPP -shared SpatialFilter_wrap.o -o _SpatialFilter.so $LINK_ALL
 
-#swig -Wall -c++ -python -I$CAMELLIA_INCLUDE BC.i
-#$CPP -c -Wall -fpic BC_wrap.cxx $INCLUDE_ALL
-#$CPP -shared BC_wrap.o -o _BC.so $LINK_ALL
+swig -Wall -c++ -python -I$CAMELLIA_INCLUDE BC.i
+$CPP -c -Wall -fpic BC_wrap.cxx $INCLUDE_ALL
+$CPP -shared BC_wrap.o -o _BC.so $LINK_ALL
 
 #swig -Wall -c++ -python -I$CAMELLIA_INCLUDE RHS.i
 #$CPP -c -Wall -fpic RHS_wrap.cxx $INCLUDE_ALL
 #$CPP -shared RHS_wrap.o -o _RHS.so $LINK_ALL
 
-#swig -Wall -c++ -python -I$CAMELLIA_INCLUDE Mesh.i
-#$CPP -c -Wall -fpic Mesh_wrap.cxx $INCLUDE_ALL
-#$CPP -shared Mesh_wrap.o -o _Mesh.so $LINK_ALL
+swig -Wall -c++ -python -I$CAMELLIA_INCLUDE Mesh.i
+$CPP -c -Wall -fpic Mesh_wrap.cxx $INCLUDE_ALL
+$CPP -shared Mesh_wrap.o -o _Mesh.so $LINK_ALL
 
-#swig -Wall -c++ -python -I$CAMELLIA_INCLUDE MeshFactory.i
-#$CPP -c -Wall -fpic MeshFactory_wrap.cxx $INCLUDE_ALL
-#$CPP -shared MeshFactory_wrap.o -o _MeshFactory.so $LINK_ALL
+swig -Wall -c++ -python -I$CAMELLIA_INCLUDE MeshFactory.i
+$CPP -c -Wall -fpic MeshFactory_wrap.cxx $INCLUDE_ALL
+$CPP -shared MeshFactory_wrap.o -o _MeshFactory.so $LINK_ALL
 
 #swig -Wall -c++ -python -I$CAMELLIA_INCLUDE Solution.i
 #$CPP -c -Wall -fpic Solution_wrap.cxx $INCLUDE_ALL
 #$CPP -shared Solution_wrap.o -o _Solution.so $LINK_ALL
 
-#swig -Wall -c++ -python -I$CAMELLIA_INCLUDE HDF5Exporter.i
-#$CPP -c -Wall -fpic HDF5Exporter_wrap.cxx $INCLUDE_ALL
-#$CPP -shared HDF5Exporter_wrap.o -o _HDF5Exporter.so $LINK_ALL
+swig -Wall -c++ -python -I$CAMELLIA_INCLUDE HDF5Exporter.i
+$CPP -c -Wall -fpic HDF5Exporter_wrap.cxx $INCLUDE_ALL
+$CPP -shared HDF5Exporter_wrap.o -o _HDF5Exporter.so $LINK_ALL
 

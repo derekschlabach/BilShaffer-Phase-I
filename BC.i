@@ -17,11 +17,11 @@ public:
   virtual GlobalIndexType vertexForSinglePointBC(int varID);
   virtual bool imposeZeroMeanConstraint(int varID);
   void addDirichlet( VarPtr traceOrFlux, SpatialFilterPtr spatialPoints, FunctionPtr valueFunction );
-  void addsinglePointBC( int fieldID, double value, GlobalIndexType meshVertexNumber = -1 );
+  void addSinglePointBC( int fieldID, double value, GlobalIndexType meshVertexNumber = -1 );
   void addZeroMeanConstraint( VarPtr field );
   void removeZeroMeanConstraint( int fieldID );
   pair< SpatialFilterPtr, FunctionPtr > getDirichletBC(int varID);
-  FunctionPtr getSpatially FilteredFunctionForDirichletBC(int varID); 
+  FunctionPtr getSpatiallyFilteredFunctionForDirichletBC(int varID); 
   static BCPtr bc();
 };
 
