@@ -1,0 +1,45 @@
+
+BC:
+
+Dummy Variable - know has no BCs
+
+addSinglePointBC() - call it on the dummy variable, then bcsImposed(dummy)
+singlePointBC
+bcsImposed
+valueForSinglePointBC - when the BC is imposed on a variable, we keep track of the single point value and compare it against
+vertexForSinglePointBC - ""
+
+
+
+addZeroMeanConstraint
+imposeZeroMeanConstraint
+removeZeroMeanConstraint - Tested together, addZeroMeanConstraint(dummy), impose for test, removeZeroMeanConstraint(dummy), impose for test 2
+
+
+
+addDirichlet: addDirichlet -> bcsImposed
+
+getDirichletBC: addDirichlet (store SpatialFilterPtr & FunctionPtr) -> getDirichletBC -> check against stored value
+
+getSpatiallyFilteredFunctionForDirichletBC
+
+------------------------------------------------------------------------------------------
+
+Mesh/MeshFactory:
+
+saveToHDF5 - visual, must check manually
+
+cellPolyOrder - Check against dummy variables for all of these
+getActiveCellIDs
+getDimension
+numActiveElements
+numFluxDofs
+numFieldDofs
+numElements
+numGlobalDofs - check fluxdofs + fielddofs
+
+hRefine -
+pRefine -
+registerSolution -
+vertexIndicesForCell -
+verticesForCell - 
