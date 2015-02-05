@@ -22,6 +22,16 @@ public:
   VarPtr traceVar(std::string name, VarPtr termTraced, Space fs = HGRAD, int ID = -1);
   VarPtr traceVar(std::string name, Space fs = HGRAD, int ID = -1);
 
+  VarPtr test(int testID);
+  VarPtr trial(int trialID);
+  
+  std::vector<int> testIDs();
+  std::vector<int> trialIDs();
+  
+  std::vector< VarPtr > fieldVars();
+  std::vector< VarPtr > fluxVars();
+  std::vector< VarPtr > traceVars();
+
 %extend {
   VarPtr testVar(std::string name, int fs, int ID = -1) {
     return self->testVar(name, (Space)fs, ID);
