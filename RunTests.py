@@ -1,10 +1,10 @@
-from BCTests import *
-#from MeshTests import *
+#from BCTests import *
+from MeshTests import *
 #from MeshFactoryTests import *
 import unittest
 
 
-testSuite = unittest.makeSuite(TestBC)
+testSuite = unittest.makeSuite(TestMesh)
 #testSuite.addTest(unittest.makesuite(TestMesh))
 #testSuite.addTest(unittest.makesuite(TestMeshFactory))
 

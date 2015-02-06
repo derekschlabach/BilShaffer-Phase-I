@@ -7,6 +7,11 @@
 %include "std_vector.i"
 %include "std_set.i"
 
+namespace std {
+  %template(vectori) vector<int>;
+   %template(vectord) vector<double>;
+ }
+
 %nodefaultctor Mesh;  // Disable the default constructor for class Mesh
 
 class Mesh {

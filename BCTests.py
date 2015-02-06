@@ -43,7 +43,7 @@ class TestBC(unittest.TestCase):
         #Initial Test Values & Set up of Dummy variable
         testSpatialFilter = SpatialFilter.SpatialFilter.allSpace()
         testFunction = Function.Function.xn()
-        testVar = VarFactory.VarFactory.testVar("testVar", L2)
+        testVar = VarFactory.VarFactory.testVar("testVar", (Space)2)
         ID = testVar.ID()
         BC.addDirichlet(testVar, testSpatialFilter, testFunction)
         
