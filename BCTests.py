@@ -1,9 +1,9 @@
 """import swig files & whatever"""
-import BC.py
-import VarFactory.py
-import SpatialFilter.py
-import Function.py
-import Var.py
+import BC
+import VarFactory
+import SpatialFilter
+import Function
+import Var
 import unittest
 
 class TestBC(unittest.TestCase):
@@ -14,7 +14,7 @@ class TestBC(unittest.TestCase):
         testVertex = 11
         testFieldID = 9
         testValue = 17.1
-        addSinglePointBC(testFieldID, testValue, meshVertexNumber = testVertex)
+        BC.BC.addSinglePointBC(testFieldID, testValue, meshVertexNumber = testVertex)
         
         #Test to see if Single Point BC has been added correctly
         self.assertTrue(bcsImposed(testFieldID), "Single Point BC not Imposed")
@@ -26,7 +26,9 @@ class TestBC(unittest.TestCase):
     #Defines Tests for ZeroMeanConstraint
     def testZeroMeanConstraint(self):
         #Initial Test Values & Set up of Dummy variable
-        testVar = VarFactory.testVar("testVar", L2)
+	vf = VarFactory.VarFactory()	
+	L2 = 2
+        testVar = VarFactory.VarFactory.testVar(vf, ("testVar", L2))
         ID = testVar.ID()
         addZeroMeanConstraint(testVar)
         
@@ -41,9 +43,9 @@ class TestBC(unittest.TestCase):
     #Defines Tests for Dirichlet
     def testDirichlet(self):
         #Initial Test Values & Set up of Dummy variable
-        testSpatialFilter = SpatialFilter.allSpace()
-        testFunction = Function.xn()
-        testVar = VarFactory.testVar("testVar", L2)
+        testSpatialFilter = SpatialFilter.SpatialFilter.allSpace()
+        testFunction = Function.Function.xn()
+        testVar = VarFactory.VarFactory.testVar("testVar", L2)
         ID = testVar.ID()
         addDirichlet(testVar, testSpatialFilter, testFunction)
         

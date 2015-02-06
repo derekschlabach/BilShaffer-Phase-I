@@ -1,4 +1,4 @@
-%module Var
+%module Solution
 %{
 #include "Solution.h"
 %}
