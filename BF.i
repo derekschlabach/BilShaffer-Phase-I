@@ -28,5 +28,15 @@ class BF {
    LinearTermPtr testFunctional(SolutionPtr trialSolution);
 
    VarFactory varFactory();
-
+   %extend {
+     static BFPtr bf(VarFactory vf) {
+       return Teuchos::rcp(new BF(vf));
+     }
+   }
  };
+
+class BFPtr {
+public:
+  BF* operator->();
+
+};
