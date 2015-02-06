@@ -14,7 +14,7 @@ Trilinos_LIBRARIES_LINK_LINE="-lpytrilinos -llocathyra -llocaepetra -llocalapack
 
 INCLUDE_ALL="-I$PYTHON_INCLUDE -I$CAMELLIA_INCLUDE -I$Trilinos_INCLUDE_DIRS -I$HDF5_INCLUDE"
 LINK_ALL="-lpython2.7 -L$Trilinos_LIBRARY_DIRS $Trilinos_LIBRARIES_LINK_LINE -L$CAMELLIA_LIB_DIR -lCamellia"
-#echo $LINK_ALL
+echo $LINK_ALL
 
 swig -Wall -c++ -python -I$CAMELLIA_INCLUDE Var.i
 $CPP -c -Wall -fpic Var_wrap.cxx $INCLUDE_ALL
