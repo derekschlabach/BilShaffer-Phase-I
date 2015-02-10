@@ -8,11 +8,15 @@
 %include "std_set.i"
 
 namespace std {
-  %template(vectori) vector<int>;
-   %template(vectord) vector<double>;
+  %template(IntVector) vector<int>;
+  %template(UnsignedSet) set<unsigned>;
  }
 
 %nodefaultctor Mesh;  // Disable the default constructor for class Mesh
+
+typedef unsigned GlobalIndexType;
+
+using namespace std;
 
 class Mesh {
 public:

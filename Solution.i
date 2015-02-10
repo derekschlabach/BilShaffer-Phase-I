@@ -3,37 +3,53 @@
 #include "Solution.h"
 %}
 
-// where are the .h files? swag
+%include "std_set.i"
+%include "std_map.i"
+
+namespace std {
+  %template(SetInt) set<int>;
+  %template(MapIntToFunction) map<int,FunctionPtr>;
+}
+
+using namespace std;
 
 class Solution {
  public:
   Solution(MeshPtr mesh, BCPtr bc = Teuchos::null,
 	   RHSPtr rhs = Teuchos::null, IPPtr ip = Teuchos::null );
-  Solution(const Solution &soln);
   int solve();
-  void addSolution(Teuchos::RCP<Solution> soln, double weight,
+  void addSolution(SolutionPtr soln, double weight,
 		 bool allowEmptyCells = false, bool replaceBoundaryTerms=false);
-  void addSolution(Teuchos::RCP<Solution> soln, double weight,
+  void addSolution(SolutionPtr soln, double weight,
 		   set<int> varsToAdd, bool allowEmptyCells = false);
   void clear();
   int cubatureEnrichmentDegree();
   void setCubatureEnrichmentDegree(int value);
   double L2NormOfSolution(int trialID);
-  void projectOntoMesh(const map<int, Teuchos::RCP<Function> > &functionMap);
+  void projectOntoMesh(const std::map<int, FunctionPtr > &functionMap);
   double energyErrorTotal();
-  void setWriteMatrixToFile(bool value,const string &filePath);
-  void setWriteMatrixToMatrixMarketFile(bool value,const string &filePath);
-  void setWriteRHSToMatrixMarketFile(bool value, const string &filePath);
-  Teuchos::RCP<Mesh> mesh();
-  Teuchos::RCP<BC> bc();
-  Teuchos::RCP<RHS> rhs();
-  Teuchos::RCP<IP> ip();
-  void setBC( Teuchos::RCP<BC> );
-  void setRHS( Teuchos::RCP<RHS> );
-  void setIP( Teuchos::RCP<IP> );
-  void save(string meshAndSolutionPrefix);
-  static SolutionPtr load(BFPtr bf, string meshAndSolutionPrefix);
-  void saveToHDF5(string filename);
-  void loadFromHDF5(string filename);
+  void setWriteMatrixToFile(bool value, const std::string &filePath);
+  void setWriteMatrixToMatrixMarketFile(bool value,const std::string &filePath);
+  void setWriteRHSToMatrixMarketFile(bool value, const std::string &filePath);
+  MeshPtr mesh();
+  BCPtr bc();
+  RHSPtr rhs();
+  IPPtr ip();
+  void setBC( BCPtr );
+  void setRHS( RHSPtr );
+  void setIP( IPPtr );
+  void save(std::string meshAndSolutionPrefix);
+  static SolutionPtr load(BFPtr bf, std::string meshAndSolutionPrefix);
+  void saveToHDF5(std::string filename);
+  void loadFromHDF5(std::string filename);
   void setUseCondensedSolve(bool value);
+  static SolutionPtr solution(MeshPtr mesh, BCPtr bc = Teuchos::null,
+                              RHSPtr rhs = Teuchos::null, IPPtr ip = Teuchos::null);
+};
+
+typedef Teuchos::RCP<Solution> SolutionPtr;
+
+class SolutionPtr {
+public:
+  Solution* operator->();
 };

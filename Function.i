@@ -5,6 +5,12 @@
 %}
 
 %include "std_string.i"
+%include "std_vector.i"
+
+namespace std {
+  %template(DoubleVector) vector<double>;
+
+}
 
 %nodefaultctor Function;  // Disable the default constructor for class Function
 
@@ -37,6 +43,9 @@ public:
   static FunctionPtr vectorize(FunctionPtr f1, FunctionPtr f2);
   static FunctionPtr normal();
   static FunctionPtr solution(VarPtr var, SolutionPtr soln);
+
+  static FunctionPtr constant(double value);
+  static FunctionPtr constant(vector<double> &value);
 
   // SWIG/Python extensions:
   %extend {
