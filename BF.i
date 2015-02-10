@@ -13,8 +13,8 @@ class BF {
    void addTerm( VarPtr trialVar, VarPtr testVar );
    void addTerm( LinearTermPtr trialTerm, VarPtr testVar);
 
-   const string & testName(int testID);
-   const string & trialName(int trialID);
+   const std::string & testName(int testID);
+   const std::string & trialName(int trialID);
 
    Camellia::EFunctionSpace functionSpaceForTest(int testID);
    Camellia::EFunctionSpace functionSpaceForTrial(int trialID);
@@ -24,7 +24,7 @@ class BF {
 
    bool isFluxOrTrace(int trialID);
 
-   string displayString();
+   std::string displayString();
    LinearTermPtr testFunctional(SolutionPtr trialSolution);
 
    VarFactory varFactory();

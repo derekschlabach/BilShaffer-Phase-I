@@ -6,6 +6,13 @@
 %include "std_string.i"
 %include "std_pair.i"
 
+namespace std {
+  %template(pairi) pair<int, int>;
+  %template(paird) pair<double, double>;
+  %template(pairs) pair<SpatialFilterPtr, FunctionPtr>;
+}
+typedef unsigned GlobalIndexType;
+
 %nodefaultctor BC;  // Disable the default constructor for class BC
 
 class BC {
@@ -20,7 +27,7 @@ public:
   void addSinglePointBC( int fieldID, double value, GlobalIndexType meshVertexNumber = -1 );
   void addZeroMeanConstraint( VarPtr field );
   void removeZeroMeanConstraint( int fieldID );
-  pair< SpatialFilterPtr, FunctionPtr > getDirichletBC(int varID);
+  std::pair< SpatialFilterPtr, FunctionPtr > getDirichletBC(int varID);
   FunctionPtr getSpatiallyFilteredFunctionForDirichletBC(int varID); 
   static BCPtr bc();
 };
