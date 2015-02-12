@@ -27,9 +27,8 @@ class TestMesh(unittest.TestCase):
         self.assertTrue(numElements == testMesh.numElements())
         self.assertTrue(numElements == testMesh.numActiveElements())
         self.assertTrue(activeCellIDs == testMesh.getActiveCellIDs())
+        self.assertTrue(testMesh.getDimension() == 2)
         polyOrder = testMesh.cellPolyOrder(0)
-        
-        print testMesh.getDimension()
 
         testMesh.pRefine(tuple([0]))
         testMesh.hRefine(tuple([0]))
@@ -44,7 +43,7 @@ class TestMesh(unittest.TestCase):
 
         filename = ".savetest"
         testMesh.saveToHDF5(filename)
-        #testMesh2 = MeshFactory.MeshFactory_loadFromHDF5(poissonBF,filename)
+        testMesh2 = MeshFactory.MeshFactory_loadFromHDF5(poissonBF,filename)
         
 
     def testMeshVertices(self):
@@ -53,9 +52,8 @@ class TestMesh(unittest.TestCase):
         poissonBF = poissonForm.bf()
         testMesh = MeshFactory.MeshFactory_rectilinearMesh(poissonBF, [1.2, 1.4], [1,1], 2)
 
-        print "\n\nVertex Indices For Cell"
-        print testMesh.vertexIndicesForCell(0)
-        print testMesh.verticesForCell(0)
+        self.assertTrue((0, 2, 3, 1) == testMesh.vertexIndicesForCell(0))
+        self.assertTrue(((0.0, 0.0), (1.2, 0.0), (1.2, 1.4), (0.0, 1.4)) == testMesh.verticesForCell(0))
         
 
 if (__name__ == '__main__'):
