@@ -5,6 +5,7 @@
 
 %include "std_string.i"
 %include "std_vector.i"
+%include "Solution.i"
 
 namespace std {
   %template(FunctionVector) vector<FunctionPtr>;
