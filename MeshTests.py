@@ -27,8 +27,7 @@ class TestMesh(unittest.TestCase):
         self.assertTrue(numElements == testMesh.numElements())
         self.assertTrue(numElements == testMesh.numActiveElements())
         self.assertTrue(activeCellIDs == testMesh.getActiveCellIDs())
-        polyOrder = testMesh.cellPolyOrder(0
-)
+        polyOrder = testMesh.cellPolyOrder(0)
         
         print testMesh.getDimension()
 
@@ -43,6 +42,11 @@ class TestMesh(unittest.TestCase):
         self.assertTrue(numElements == testMesh.numElements())
         self.assertTrue(numActiveElements == testMesh.numActiveElements())
 
+        filename = ".savetest"
+        testMesh.saveToHDF5(filename)
+        #testMesh2 = MeshFactory.MeshFactory_loadFromHDF5(poissonBF,filename)
+        
+
     def testMeshVertices(self):
         
         poissonForm = PoissonFormulation.PoissonFormulation(2, True)
@@ -51,7 +55,7 @@ class TestMesh(unittest.TestCase):
 
         print "\n\nVertex Indices For Cell"
         print testMesh.vertexIndicesForCell(0)
-        #print testMesh.verticesForCell(0)
+        print testMesh.verticesForCell(0)
         
 
 if (__name__ == '__main__'):
