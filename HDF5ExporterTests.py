@@ -29,10 +29,10 @@ class TestHDF5Exporter(unittest.TestCase):
         testExport = HDF5Exporter.HDF5Exporter(testMesh, "output", ".")
 
 	#Tests exportFunction using definition #1
-        #testExport.exportFunction(testFunction,"function",0)
+        testExport.exportFunction(testFunction,"function",0)
 
 	#Tests exportFunction using definition #2
-	#testExport.exportFunction(testVector,testVector2,0)
+	testExport.exportFunction(testVector,testVector2,0)
 
 	#Tests exportSolution
 	testExport.exportSolution(testSolutionPtr,poissonBF.varFactory(), 0)
