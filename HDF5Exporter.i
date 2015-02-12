@@ -6,6 +6,11 @@
 %include "std_string.i"
 %include "std_vector.i"
 
+namespace std {
+  %template(FunctionVector) vector<FunctionPtr>;
+   %template(StringVector) vector<string>;
+ }
+
 %nodefaultctor HDF5Exporter;  // Disable the default constructor for class HDF5Exporter
 
 using namespace std;

@@ -21,8 +21,21 @@ class TestHDF5Exporter(unittest.TestCase):
         poissonBF = poissonForm.bf() #ToDo Give the VarFactory a field & test variable
         testMesh = MeshFactory.MeshFactory_rectilinearMesh(poissonBF, [1.2, 1.4], [2,3], 2)
         testFunction = Function.Function.xn()
+	testFunction2 = Function.Function.yn()
+	testVF = VarFactory.VarFactory()
+	testVector = [testFunction, testFunction2]
+	testVector2 = ["function1", "function2"]
+	testBC = BC.BC(False)
+	testSolutionPtr = Solution.Solution_solution(testMesh)
         testExport = HDF5Exporter.HDF5Exporter(testMesh, "output", ".")
+
+	#Tests exportFunction using definition #1
         testExport.exportFunction(testFunction,"function",0)
 
+	#Tests exportFunction using definition #2
+	testExport.exportFunction(testVector,testVector2,0)
+
+	#Tests exportSolution
+	testExport.exportSolution(testSolutionPtr,testVF, 0)
 if (__name__ == '__main__'):
     unittest.main()

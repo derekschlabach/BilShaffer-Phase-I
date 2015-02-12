@@ -12,7 +12,7 @@ namespace std {
   %template(DoubleVector) vector<double>;
   %template(UnsignedVector) vector<unsigned>;
   %template(DoubleVectorVector) vector<vector<double>>;
-  %template(UnsignedSet) set<unsigned>;
+   %template(UnsignedSet) set<unsigned>;
  }
 
 %nodefaultctor Mesh;  // Disable the default constructor for class Mesh
