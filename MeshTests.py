@@ -2,6 +2,7 @@
 import unittest
 import MeshFactory
 import Mesh
+import Solution
 import BF
 import VarFactory
 import PoissonFormulation
@@ -40,14 +41,23 @@ class TestMesh(unittest.TestCase):
         self.assertTrue(polyOrder == testMesh.cellPolyOrder(0))
         self.assertTrue(numElements == testMesh.numElements())
         self.assertTrue(numActiveElements == testMesh.numActiveElements())
- 
 
-        filename = ".savetest"
+
+#Could not figure out how to get registersolution, unregistersolution to work
+
+        #solution = Solution.Solution_solution(testMesh)
+        #print type(solution)
+        #testMesh.registerSolution(solution)
+        #testMesh.unregisterSolution(solution)
+
+        filename = "B.1.HDF5"
         testMesh.saveToHDF5(filename)
         
-        #Not sure how this is implemented?
+ #Could not figure out how to get loadfromHDF5 (& maybe save) to work
+        # Load saved Mesh from HDF5
         #testMesh2 = MeshFactory.MeshFactory_loadFromHDF5(poissonBF,filename)
-        
+
+        # Load triangle from HDF5
         testMesh3 = MeshFactory.MeshFactory_readTriangle("A.1", poissonBF, 2, 3)
 
     def testMeshVertices(self):

@@ -1,5 +1,6 @@
 %module Mesh
 %{
+#include "IndexType.h"
 #include "Mesh.h"
 %}
 
@@ -35,6 +36,7 @@ public:
   GlobalIndexType numElements();
   void pRefine(const set<GlobalIndexType> &cellIDsForPRefinments);
   void registerSolution(SolutionPtr solution);
+  void unregisterSolution(SolutionPtr solution);
   vector<unsigned> vertexIndicesForCell(GlobalIndexType cellID);
   vector< vector<double> > verticesForCell(GlobalIndexType cellID);
 };
