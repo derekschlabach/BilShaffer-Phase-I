@@ -40,11 +40,15 @@ class TestMesh(unittest.TestCase):
         self.assertTrue(polyOrder == testMesh.cellPolyOrder(0))
         self.assertTrue(numElements == testMesh.numElements())
         self.assertTrue(numActiveElements == testMesh.numActiveElements())
+ 
 
         filename = ".savetest"
         testMesh.saveToHDF5(filename)
-        testMesh2 = MeshFactory.MeshFactory_loadFromHDF5(poissonBF,filename)
         
+        #Not sure how this is implemented?
+        #testMesh2 = MeshFactory.MeshFactory_loadFromHDF5(poissonBF,filename)
+        
+        testMesh3 = MeshFactory.MeshFactory_readTriangle("A.1", poissonBF, 2, 3)
 
     def testMeshVertices(self):
         
