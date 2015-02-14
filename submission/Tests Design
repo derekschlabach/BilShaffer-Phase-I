@@ -1,48 +1,60 @@
+Derek Schlabach & Max Terman
+Test Designs
 
-BC:
+BC Test Design:
 
-Dummy Variable - know has no BCs
+	Single Point
+		Create a BC (must create prior a varfactor, and fieldVar), add a Single Point Constraint
+			save values for Vertex, FieldID, Value
+		Test functions against saved values
+			bcsImposed
+			singlePointBC
+			valueForSinglePointBC
+			vertexForSinglePointBC
+		
+	
+	Zero Mean Constraint
+		Create a BC (must create prior a varfactor, and fieldVar), add a Zero Mean Constraint
+			no need to save values (outside of the ID)
+		Test addZeroMeanConstraint and imposeZeroMeanConstraint to see if they are added
+		Test removeZeroMeanConstraint using imposeZeroMeanConstraint to see if it is removed
 
-addSinglePointBC() - call it on the dummy variable, then bcsImposed(dummy)
-singlePointBC
-bcsImposed
-valueForSinglePointBC - when the BC is imposed on a variable, we keep track of the single point value and compare it against
-vertexForSinglePointBC - ""
 
-
-
-addZeroMeanConstraint
-imposeZeroMeanConstraint
-removeZeroMeanConstraint - Tested together, addZeroMeanConstraint(dummy), impose for test, removeZeroMeanConstraint(dummy), impose for test 2
-
-
-
-addDirichlet: addDirichlet -> bcsImposed
-
-getDirichletBC: addDirichlet (store SpatialFilterPtr & FunctionPtr) -> getDirichletBC -> check against stored value
-
-getSpatiallyFilteredFunctionForDirichletBC
+	Dirichlet
+		Create a BC (must create prior a varfactor, and fieldVar), add a Dirichlet Constraint
+			save values for SpatialFilter & Function (Function.Function.xn())
+		Test functions to see if the dirichlet is added with the correct values
+			getDirchletBC
+			getSpatiallyFilteredFunctionFunctionForDirichlet
 
 ------------------------------------------------------------------------------------------
 
-Mesh/MeshFactory:
+Mesh/MeshFactory Test Design:
 
-saveToHDF5 - visual, must check manually
-
-cellPolyOrder - Check against dummy variables for all of these
-getActiveCellIDs
-getDimension - compute # from paramaters & check
-numActiveElements - compute # of elements from parameters & check, 1 refined gives 4
-numFluxDofs - test that FluxDofs + FieldDofs == GlobalDofs
-numFieldDofs - test that FluxDofs + FieldDofs == GlobalDofs
-numElements - compute # of elements from pararmaters & check, 1 refined gives 5
-numGlobalDofs - check fluxdofs + fielddofs
-
-hRefine - refine 1 cell, it should take 1 away and add 4 so cell count should be up 3
-pRefine - pRefine one cell, use cellPolyOrder to check to see if it went up by 1
-registerSolution -
-vertexIndicesForCell - run a dummy test initially for a 1x1, test should make sure it doesn't change
-verticesForCell - run a dummy test initially for a 1x1, test should make sure it doesn't change
-
-for build.sh
-	$CPP -O or -o
+	Normal Mesh Tests
+		Create a BF from a Poisson Formulation
+		Create a Mesh
+			save values for # of cells & h1Order
+		Test functions against saved values
+			cellPolyOrder
+			numElements
+			numActiveElements
+			getActiveCellIDs - create a tuple using a loop from number of elements
+			getDimenions - should equal 2
+			save PolyOrder
+		pRefine and hRefine
+			recheck polyOrder, numElements, and numActiveElements with updated values
+		Save the Mesh to HDF5
+		Reload the HDF5 to a new variable
+			loadFromHDF5
+		Load a triangle mesh to a new variable
+			Use downloaded A.1.poly
+	
+	
+	Vertices Mesh Tests
+		Create a BF from a Poisson Formulation
+		Create a Mesh
+		Check values initially using print
+			in actual test make sure those tests check out once more (for vertices)
+				vertexIndicesForCell
+				verticesForCell
