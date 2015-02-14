@@ -1,0 +1,48 @@
+
+BC:
+
+Dummy Variable - know has no BCs
+
+addSinglePointBC() - call it on the dummy variable, then bcsImposed(dummy)
+singlePointBC
+bcsImposed
+valueForSinglePointBC - when the BC is imposed on a variable, we keep track of the single point value and compare it against
+vertexForSinglePointBC - ""
+
+
+
+addZeroMeanConstraint
+imposeZeroMeanConstraint
+removeZeroMeanConstraint - Tested together, addZeroMeanConstraint(dummy), impose for test, removeZeroMeanConstraint(dummy), impose for test 2
+
+
+
+addDirichlet: addDirichlet -> bcsImposed
+
+getDirichletBC: addDirichlet (store SpatialFilterPtr & FunctionPtr) -> getDirichletBC -> check against stored value
+
+getSpatiallyFilteredFunctionForDirichletBC
+
+------------------------------------------------------------------------------------------
+
+Mesh/MeshFactory:
+
+saveToHDF5 - visual, must check manually
+
+cellPolyOrder - Check against dummy variables for all of these
+getActiveCellIDs
+getDimension - compute # from paramaters & check
+numActiveElements - compute # of elements from parameters & check, 1 refined gives 4
+numFluxDofs - test that FluxDofs + FieldDofs == GlobalDofs
+numFieldDofs - test that FluxDofs + FieldDofs == GlobalDofs
+numElements - compute # of elements from pararmaters & check, 1 refined gives 5
+numGlobalDofs - check fluxdofs + fielddofs
+
+hRefine - refine 1 cell, it should take 1 away and add 4 so cell count should be up 3
+pRefine - pRefine one cell, use cellPolyOrder to check to see if it went up by 1
+registerSolution -
+vertexIndicesForCell - run a dummy test initially for a 1x1, test should make sure it doesn't change
+verticesForCell - run a dummy test initially for a 1x1, test should make sure it doesn't change
+
+for build.sh
+	$CPP -O or -o
